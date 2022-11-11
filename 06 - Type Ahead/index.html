@@ -21,7 +21,6 @@
         .then((res) => res.json())
         .then((data) => {
           cities.push(...data);
-          console.log(cities);
         });
 
       function findMatches(wordToMatch, cities) {
@@ -58,7 +57,6 @@
               </li>`;
           })
           .join("");
-        console.log(matchArray);
         suggestions.innerHTML = html;
       }
 

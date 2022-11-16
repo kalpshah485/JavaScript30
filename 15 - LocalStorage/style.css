@@ -16,13 +16,24 @@ html {
   box-sizing: inherit;
 }
 
-svg {
+svg#fish {
   fill: white;
   background: rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 50%;
   width: 200px;
   margin-bottom: 50px;
+}
+svg.delete {
+  margin: 0;
+  padding: 0;
+  height: 19px;
+}
+
+ul > li > button {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .wrapper {

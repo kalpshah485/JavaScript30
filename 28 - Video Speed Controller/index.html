@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Video Speed Scrubber</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <video
+        class="flex"
+        width="765"
+        height="430"
+        src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+        loop
+        controls
+      ></video>
+      <div class="speed">
+        <div class="speed-bar">1×</div>
+      </div>
+    </div>
+
+    <script>
+      const speed = document.querySelector(".speed");
+      const bar = speed.querySelector(".speed-bar");
+      const video = document.querySelector(".flex");
+
+      speed.addEventListener("mousemove", (e) => {
+        const min = 0.5;
+        const max = 4;
+        const dontCountableDistance = (min / max) * speed.offsetHeight;
+        const y = e.pageY - speed.offsetTop - dontCountableDistance;
+        console.log(y);
+        const tempPercent = y / (speed.offsetHeight - dontCountableDistance);
+        const percent = tempPercent < 0 ? 0 : Number(tempPercent.toFixed(3));
+        console.log(percent);
+        const height =
+          Math.round((100 / max) * (percent * (max - min) + min)) + "%";
+        const playbackRate = Number((percent * (max - min) + min).toFixed(2));
+        bar.style.height = height;
+        console.log(height);
+        bar.textContent = playbackRate + "×";
+        video.playbackRate = playbackRate;
+        console.log(playbackRate);
+      });
+
+      console.log(video);
+    </script>
+  </body>
+</html>
